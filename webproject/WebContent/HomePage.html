@@ -11,7 +11,7 @@
       color: #1f3d2c;
     }
 
-    /* Navigation Bar */
+    /* nav bar styling using CSS*/
     nav {
       background-color: #1f3d2c;
       color: white;
@@ -83,7 +83,7 @@
       letter-spacing: 1px;
     }
 
-    /* Restaurant cards section */
+    /* styling section for restaurant cards with pictures using CSS*/
     .restaurants {
       display: flex;
       justify-content: center;
@@ -158,7 +158,7 @@
 </head>
 <body>
 
-  <!-- Navigation Bar -->
+  <!--nav bar html-->
   <nav>
     <div class="logo">No Food Left Behind</div>
 
@@ -166,56 +166,58 @@
       <li><a href="HomePage.html">Home</a></li>
       <li><a href="AddFood.html">Add Food</a></li>
       <li><a href="BrowseFood.html">Browse Food</a></li>
-      <li><a href="Join.html">Join</a></li>
+      <li><a href="Join.html">About</a></li>
       <li><a href="simpleFormInsert.html">Insert Form</a></li>
       <li><a href="simpleFormSearch.html">Search Form</a></li>
     </ul>
 
     <div class="search-bar">
-      <input type="text" id="search" placeholder="Search restaurants...">
+      <input type="text" id="search" placeholder="Search restaurants/foods...">
       <button onclick="search()">Search</button>
     </div>
   </nav>
 
   <header>Our Partner Restaurants</header>
 
-  <!-- Restaurant Cards -->
+  <!-- restaurant cards with pictures -->
   <div class="restaurants">
     <div class="card">
-      <div class="img-box">Image Placeholder</div>
+      <div class="img-box">Image Eye-Pop</div>
       <h3>Eye-Pop</h3>
     </div>
 
     <div class="card">
-      <div class="img-box">Image Placeholder</div>
+      <div class="img-box">Image McTrump's</div>
       <h3>McTrump’s</h3>
     </div>
 
     <div class="card">
-      <div class="img-box">Image Placeholder</div>
+      <div class="img-box">Image BQ</div>
       <h3>Burger Queen</h3>
     </div>
 
     <div class="card">
-      <div class="img-box">Image Placeholder</div>
+      <div class="img-box">Image TRoadHouse</div>
       <h3>Tesla Roadhouse</h3>
     </div>
   </div>
 
-  <button class="browse-btn" onclick="browseMore()">Browse more</button>
+  <button class="browse-btn" onclick="browseRestaurants()">Browse more</button>
 
   <script>
+    //onclick listeners for search function when user searches for food and restaurants using java script
     function search() {
       const query = document.getElementById('search').value;
       if (query.trim() === "") {
-        alert("Please enter something to search!");
+        alert("Please enter to search!");
       } else {
         alert("Searching for: " + query);
       }
     }
 
-    function browseMore() {
-      alert("Loading more restaurants...");
+    //onclick listener for browsing all the available partner restaurants using java script 
+    function browseRestaurants() {
+      alert("Loading restaurants...");
     }
   </script>
 

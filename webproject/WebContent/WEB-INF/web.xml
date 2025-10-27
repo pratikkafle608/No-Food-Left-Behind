@@ -5,7 +5,7 @@
          https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
 
-    <!-- Map the LoginServlet -->
+    <!-- Login Servlet -->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>LoginServlet</servlet-class>
@@ -16,9 +16,31 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
-    <!-- Set login.html as the default page -->
+    <!-- Subscribe Servlet -->
+    <servlet>
+        <servlet-name>SubscribeServlet</servlet-name>
+        <servlet-class>SubscribeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SubscribeServlet</servlet-name>
+        <url-pattern>/subscribe</url-pattern>
+    </servlet-mapping>
+
+    <!-- Default page -->
     <welcome-file-list>
         <welcome-file>login.html</welcome-file>
     </welcome-file-list>
+    
+    <!-- Unsubscribe Servlet -->
+<servlet>
+    <servlet-name>UnsubscribeServlet</servlet-name>
+    <servlet-class>UnsubscribeServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>UnsubscribeServlet</servlet-name>
+    <url-pattern>/unsubscribe</url-pattern>
+</servlet-mapping>
 
 </web-app>

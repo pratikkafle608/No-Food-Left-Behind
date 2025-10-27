@@ -11,7 +11,7 @@
       color: #1f3d2c;
     }
 
-    /* Navigation Bar */
+    /* same nav bar styling copied fro homepage section */
     nav {
       background-color: #1f3d2c;
       color: white;
@@ -160,7 +160,7 @@
 
 <body>
 
-  <!-- Navigation Bar -->
+  <!-- nav bar styling -->
   <nav>
     <div class="logo">No Food Left Behind</div>
 
@@ -180,10 +180,10 @@
     </div>
   </nav>
 
-  <!-- Header -->
+  
   <header>Welcome Back</header>
 
-  <!-- Login Form -->
+  <!-- Login for the restaurants that are aleady signed up -->
   <div class="form-container">
     <h2>Login to Your Account</h2>
     <form action="SimpleFormSearch" method="post">
@@ -202,7 +202,7 @@
   </div>
 
   <script>
-    function search() {
+    function search() { //listener for search
       const query = document.getElementById('search').value.trim();
       if (!query) {
         alert("Please enter something to search!");

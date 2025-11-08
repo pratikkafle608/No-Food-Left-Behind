@@ -11,7 +11,28 @@
       color: #1f3d2c;
     }
 
-    /* nav bar styling using CSS*/
+    /* image box styling */
+    .img-box {
+      width: 100%;
+      height: 130px;
+      background-color: #e8e6e0;
+      border: 2px dashed #1f3d2c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.8rem;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    /* nav bar styling */
     nav {
       background-color: #1f3d2c;
       color: white;
@@ -83,7 +104,7 @@
       letter-spacing: 1px;
     }
 
-    /* styling section for restaurant cards with pictures using CSS*/
+    /* restaurant cards */
     .restaurants {
       display: flex;
       justify-content: center;
@@ -107,19 +128,6 @@
 
     .card:hover {
       transform: translateY(-5px);
-    }
-
-    .card .img-box {
-      width: 100%;
-      height: 130px;
-      background-color: #e8e6e0;
-      border: 2px dashed #1f3d2c;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 0.8rem;
-      font-size: 0.9rem;
-      color: #666;
     }
 
     .card h3 {
@@ -158,7 +166,7 @@
 </head>
 <body>
 
-  <!--nav bar html-->
+  <!-- Navigation bar -->
   <nav>
     <div class="logo">No Food Left Behind</div>
 
@@ -179,25 +187,33 @@
 
   <header>Our Partner Restaurants</header>
 
-  <!-- restaurant cards with pictures -->
+  <!-- Restaurant cards -->
   <div class="restaurants">
     <div class="card">
-      <div class="img-box">Image Eye-Pop</div>
+      <div class="img-box">
+        <img src="ipop.jpg" alt="Eye-Pop Restaurant">
+      </div>
       <h3>Eye-Pop</h3>
     </div>
 
     <div class="card">
-      <div class="img-box">Image McTrump's</div>
+      <div class="img-box">
+        <img src="mcTrump.jpg" alt="McTrump’s Restaurant">
+      </div>
       <h3>McTrump’s</h3>
     </div>
 
     <div class="card">
-      <div class="img-box">Image BQ</div>
+      <div class="img-box">
+        <img src="bq.jpg" alt="Burger Queen">
+      </div>
       <h3>Burger Queen</h3>
     </div>
 
     <div class="card">
-      <div class="img-box">Image TRoadHouse</div>
+      <div class="img-box">
+        <img src="teslardhouse.jpg" alt="Tesla Roadhouse">
+      </div>
       <h3>Tesla Roadhouse</h3>
     </div>
   </div>
@@ -205,7 +221,7 @@
   <button class="browse-btn" onclick="browseRestaurants()">Browse more</button>
 
   <script>
-    //onclick listeners for search function when user searches for food and restaurants using java script
+    // Search function
     function search() {
       const query = document.getElementById('search').value;
       if (query.trim() === "") {
@@ -215,7 +231,7 @@
       }
     }
 
-    //onclick listener for browsing all the available partner restaurants using java script 
+    // Browse restaurants function
     function browseRestaurants() {
       alert("Loading restaurants...");
     }

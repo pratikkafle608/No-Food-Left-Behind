@@ -1,118 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>No Food Left Behind</title>
-  <style>
-    body {
-      font-family: "Georgia", serif;
-      margin: 0;
-      background-color: #f9f7f1;
-      color: #1f3d2c;
-    }
+<meta charset="UTF-8">
+<title>No Food Left Behind</title>
+<style>
+body {
+	font-family: "Georgia", serif;
+	margin: 0;
+	background-color: #f9f7f1;
+	color: #1f3d2c;
+}
 
-    header {
-      text-align: center;
-      padding: 2rem 0 1rem;
-      font-size: 1.8rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
+av {
+	background-color: #1f3d2c;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.8rem 2rem;
+}
 
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 3rem;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem;
-      flex-wrap: wrap;
-    }
+.nav-links {
+	display: flex;
+	gap: 1.5rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
 
-    .left {
-      flex: 1;
-      min-width: 280px;
-    }
+.nav-links a {
+	color: white;
+	text-decoration: none;
+	font-size: 1rem;
+	transition: color 0.3s;
+}
 
-    .left h2 {
-      font-size: 2.5rem;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
+.nav-links a:hover {
+	color: #c7e0d0;
+}
 
-    .right {
-      flex: 1;
-      min-width: 300px;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
+header {
+	text-align: center;
+	padding: 2rem 0 1rem;
+	font-size: 1.8rem;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
 
-    .right p {
-      margin-bottom: 1.2rem;
-    }
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 3rem;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 2rem;
+	flex-wrap: wrap;
+}
 
-    .btn {
-      background-color: #1f3d2c;
-      color: white;
-      padding: 0.8rem 2rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
+.left {
+	flex: 1;
+	min-width: 280px;
+}
 
-    .btn:hover {
-      background-color: #305a43;
-    }
+.left h2 {
+	font-size: 2.5rem;
+	line-height: 1.2;
+	margin-bottom: 1rem;
+}
 
-    .login-link {
-      display: block;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: #1f3d2c;
-      text-decoration: none;
-    }
+.right {
+	flex: 1;
+	min-width: 300px;
+	font-size: 1rem;
+	line-height: 1.6;
+}
 
-    .login-link:hover {
-      text-decoration: underline;
-    }
+.right p {
+	margin-bottom: 1.2rem;
+}
 
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        text-align: center;
-      }
-      .left h2 {
-        font-size: 2rem;
-      }
-    }
-  </style>
+.btn {
+	background-color: #1f3d2c;
+	color: white;
+	padding: 0.8rem 2rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+	background-color: #305a43;
+}
+
+.login-link {
+	display: block;
+	margin-top: 1rem;
+	font-size: 0.9rem;
+	color: #1f3d2c;
+	text-decoration: none;
+}
+
+.login-link:hover {
+	text-decoration: underline;
+}
+
+@media ( max-width : 768px) {
+	nav {
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+	.container {
+		flex-direction: column;
+		text-align: center;
+	}
+	.left h2 {
+		font-size: 2rem;
+	}
+}
+</style>
 </head>
 
 <body>
-  <header>NO FOOD LEFT BEHIND</header>
+	<nav>
+		<div class="logo">No Food Left Behind</div>
 
-  <div class="container">
-    <div class="left">
-      <h2>Join our food provider network</h2>
-    </div>
+		<ul class="nav-links">
+			<li><a href="HomePage.html">Home</a></li>
+			<li><a href="BrowseFood.html">Available Foods</a></li>
+			<li><a href="AddFood.html">Add Food</a></li>
+		</ul>
+	</nav>
 
-    <div class="right">
-      <p>
-        Have extra food at your restaurant that would otherwise go to waste?
-        Join our mission to fight hunger and reduce waste by sharing your surplus meals with local communities.
-      </p>
-      <p>
-        Help turn your leftovers into hope. Together, we can make “no food left behind” a reality.
-      </p>
-      <button class="btn" onclick="signUp()">Sign-up here</button>
-      <a href="Login.html" class="login-link">Already a member? Log in here</a>
-    </div>
-  </div>
+	<header>NO FOOD LEFT BEHIND</header>
 
-  <script>
+	<div class="container">
+		<div class="left">
+			<h2>Join our food provider network</h2>
+		</div>
+
+		<div class="right">
+			<p>Have extra food at your restaurant that would otherwise go to
+				waste? Join our mission to fight hunger and reduce waste by sharing
+				your surplus meals with local communities.</p>
+			<p>Help turn your leftovers into hope. Together, we can make “no
+				food left behind” a reality.</p>
+			<button class="btn" onclick="signUp()">Sign-up here</button>
+			<a href="Login.html" class="login-link">Already a member? Log in
+				here</a>
+		</div>
+	</div>
+
+	<script>
     function signUp() {
       alert("Redirecting to signup....."); //replace the href link with the signup page link hyperlink
       

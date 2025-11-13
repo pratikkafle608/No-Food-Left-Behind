@@ -11,7 +11,7 @@
       color: #1f3d2c;
     }
 
-    /* Navigation Bar */
+    /* same nav bar styling copied from the home page */
     nav {
       background-color: #1f3d2c;
       color: white;
@@ -54,7 +54,7 @@
       letter-spacing: 1px;
     }
 
-    /* Add Food for the restaurants */
+    /* styling for adding food for restaurants */
     .form-container {
       background-color: #fffdf8;
       border: 2px solid #1f3d2c;
@@ -139,12 +139,12 @@
 </head>
 <body>
 
-  <!-- Navigation Bar -->
+  <!-- Nav bar html since it is static around different pages same code -->
   <nav>
     <div class="logo">No Food Left Behind</div>
 
     <ul class="nav-links">
-      <li><a href="HomePage.html">Home</a></li>
+      <li><a href="MainApp.html">Home</a></li>
       <li><a href="BrowseFood.html">Available Foods</a></li>
       <li><a href="AddFood.html">Add Food</a></li>
     </ul>
@@ -152,31 +152,31 @@
 
   <header>Add Food (Restaurant Portal)</header>
 
-  <!-- Add Food Form -->
+  <!-- adding Excess food for giving away or discounted rate -->
   <div class="form-container">
     <div class="form-group">
-      <label for="restaurant">Restaurant Name</label>
-      <input type="text" id="restaurant" placeholder="Enter your restaurant name">
+      <label for="restaurantId">Restaurant ID</label>
+      <input type="text" id="restaurantId" placeholder="Enter your restaurant Id">
     </div>
 
+    <div class="form-group">
+      <label for="foodId">Food ID</label>
+      <input type="text" id="foodId" placeholder="Enter food id">
+    </div>
+    
     <div class="form-group">
       <label for="foodName">Food Name</label>
-      <input type="text" id="foodName" placeholder="Enter food name">
+      <input type="text" id="foodName" placeholder="Enter food Name">
     </div>
 
     <div class="form-group">
-      <label for="quantity">Quantity / Portions</label>
-      <input type="text" id="quantity" placeholder="e.g., 10 servings or 5 boxes">
+      <label for="discount">Discount</label>
+      <input type="text" id="discount" placeholder="Discount percentage">
     </div>
 
     <div class="form-group">
-      <label for="description">Description</label>
-      <textarea id="description" rows="4" placeholder="Add a short note about the food..."></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>Food Image (Optional)</label>
-      <div class="image-placeholder">Image Placeholder</div>
+      <label for="pickupTime">Pickup Time</label>
+	  <input type="text" id="pickupTime" placeholder="00:00">
     </div>
 
     <button type="button" onclick="addFood()">Add Food</button>

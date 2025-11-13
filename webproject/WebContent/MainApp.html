@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>No Food Left Behind</title>
+<style>
+/* ---------- GLOBAL STYLES ---------- */
+body {
+	font-family: "Georgia", serif;
+	margin: 0;
+	background-color: #f9f7f1;
+	color: #1f3d2c;
+}
+
+footer {
+	background-color: #1f3d2c;
+	color: white;
+	text-align: center;
+	padding: 1.5rem 0;
+	margin-top: 2rem;
+}
+
+footer a {
+	color: #c7e0d0;
+	text-decoration: none;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+header {
+	text-align: center;
+	padding: 2rem 0 1rem;
+	font-size: 1.8rem;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+/* ---------- NAVIGATION BAR ---------- */
+nav {
+	background-color: #1f3d2c;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.8rem 2rem;
+}
+
+.logo {
+	font-size: 1.3rem;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+.nav-links {
+	display: flex;
+	gap: 1.5rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav-links a {
+	color: white;
+	text-decoration: none;
+	font-size: 1rem;
+	transition: color 0.3s;
+}
+
+.nav-links a:hover {
+	color: #c7e0d0;
+}
+
+.search-bar {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.search-bar input {
+	padding: 0.4rem 0.7rem;
+	border-radius: 4px;
+	border: none;
+	font-family: "Georgia", serif;
+	font-size: 0.9rem;
+}
+
+.search-bar button {
+	background-color: #c7e0d0;
+	color: #1f3d2c;
+	border: none;
+	padding: 0.4rem 0.8rem;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	font-family: "Georgia", serif;
+}
+
+.search-bar button:hover {
+	background-color: #b2d4bf;
+}
+
+/* ---------- JOIN SECTION ---------- */
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 3rem;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 2rem;
+	flex-wrap: wrap;
+}
+
+.left {
+	flex: 1;
+	min-width: 280px;
+}
+
+.left h2 {
+	font-size: 2.5rem;
+	line-height: 1.2;
+	margin-bottom: 1rem;
+}
+
+.right {
+	flex: 1;
+	min-width: 300px;
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+.right p {
+	margin-bottom: 1.2rem;
+}
+
+.btn {
+	background-color: #1f3d2c;
+	color: white;
+	padding: 0.8rem 2rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+	background-color: #305a43;
+}
+
+.login-link {
+	display: block;
+	margin-top: 1rem;
+	font-size: 0.9rem;
+	color: #1f3d2c;
+	text-decoration: none;
+}
+
+.login-link:hover {
+	text-decoration: underline;
+}
+
+/* ---------- RESTAURANT CARDS ---------- */
+.restaurants {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	gap: 3rem;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+.card {
+	width: 200px;
+	padding: 1rem;
+	border: 3px solid #1f3d2c;
+	border-radius: 8px;
+	background-color: #fffdf8;
+	text-align: center;
+	transition: transform 0.3s ease;
+}
+
+.card:hover {
+	transform: translateY(-5px);
+}
+
+.img-box {
+	width: 100%;
+	height: 130px;
+	background-color: #e8e6e0;
+	border: 2px dashed #1f3d2c;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 0.8rem;
+	overflow: hidden;
+	border-radius: 4px;
+}
+
+.img-box img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.card h3 {
+	font-size: 1.1rem;
+	margin: 0.5rem 0 0;
+}
+
+.browse-btn {
+	background-color: #1f3d2c;
+	color: white;
+	padding: 0.8rem 2rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+	display: block;
+	margin: 1rem auto 2rem;
+}
+
+.browse-btn:hover {
+	background-color: #305a43;
+}
+
+/* ---------- RESTAURANT DETAIL SECTION ---------- */
+.restaurant {
+	max-width: 700px;
+	margin: 2rem auto;
+	padding: 2rem;
+	background-color: #fffdf8;
+	border: 2px solid #1f3d2c;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.image-box {
+	width: 200px;
+	height: 200px;
+	margin: 0 auto 1rem;
+	background-color: #e8e6e0;
+	border: 3px dashed #1f3d2c;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #666;
+	font-size: 0.9rem;
+	border-radius: 6px;
+}
+
+.restaurant h2 {
+	font-size: 1.8rem;
+	margin-bottom: 1.5rem;
+	font-weight: bold;
+}
+
+.menu {
+	text-align: left;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.menu h3 {
+	font-size: 1.1rem;
+	margin-bottom: 0.5rem;
+}
+
+.menu ul {
+	list-style-type: disc;
+	padding-left: 1.5rem;
+	line-height: 1.6;
+	font-size: 1rem;
+}
+
+.back-btn {
+	display: block;
+	margin: 3rem auto 1rem;
+	background-color: #1f3d2c;
+	color: white;
+	padding: 0.7rem 2rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+	background-color: #305a43;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media ( max-width : 768px) {
+	nav {
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+	.container {
+		flex-direction: column;
+		text-align: center;
+	}
+	.left h2 {
+		font-size: 2rem;
+	}
+	.restaurants {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+</style>
+</head>
+
+<body>
+	<!-- Navigation bar -->
+	<nav>
+		<div class="logo">No Food Left Behind</div>
+		<ul class="nav-links">
+			<li><a href="MainApp.html">Home</a></li>
+			<li><a href="AddFood.html">Add Food</a></li>
+			<li><a href="BrowseFood.html">Available Food</a></li>
+			<li><a href="Join.html">About</a></li>
+			<li><a href="simpleFormInsert.html">Insert Form</a></li>
+			<li><a href="subscribe.html">Subscribe</a></li>
+		</ul>
+		<div class="search-bar">
+			<input type="text" id="search"
+				placeholder="Search restaurants/foods..." onkeyup="search()">
+			<button onclick="search()">Search</button>
+		</div>
+	</nav>
+
+	<!-- Join Section -->
+	<div class="container">
+		<div class="left">
+			<h2>Join our food provider network</h2>
+		</div>
+		<div class="right">
+			<p>Have extra food at your restaurant that would otherwise go to
+				waste? Join our mission to fight hunger and reduce waste by sharing
+				your surplus meals with local communities.</p>
+			<p>Help turn your leftovers into hope. Together, we can make “no
+				food left behind” a reality.</p>
+			<a href="Signup.html"><button class="btn">Sign-up here</button></a> <a
+				href="Login.html" class="login-link">Already a member? Log in
+				here</a>
+		</div>
+	</div>
+
+	<!-- Partner Restaurants -->
+	<header>Our Partner Restaurants</header>
+	<div id="searchResultsMessage" class="search-message"></div>
+
+	<div class="restaurants">
+		<div class="card">
+			<div class="img-box">
+				<img src="ipop.jpg" alt="Eye-Pop Restaurant">
+			</div>
+			<h3>Eye-Pop</h3>
+		</div>
+
+		<div class="card">
+			<div class="img-box">
+				<img src="mcTrump.jpg" alt="McTrump’s Restaurant">
+			</div>
+			<h3>McTrump’s</h3>
+		</div>
+
+		<div class="card">
+			<div class="img-box">
+				<img src="bq.jpg" alt="Burger Queen">
+			</div>
+			<h3>Burger Queen</h3>
+		</div>
+
+		<div class="card">
+			<div class="img-box">
+				<img src="teslardhouse.jpg" alt="Tesla Roadhouse">
+			</div>
+			<h3>Tesla Roadhouse</h3>
+		</div>
+	</div>
+
+	<button class="browse-btn" onclick="browseRestaurants()">Browse
+		more</button>
+
+	<!-- Restaurant Detail Sections -->
+	<div class="restaurant">
+		<div class="image-box">Image Placeholder</div>
+		<h2>Eye-Pop</h2>
+		<div class="menu">
+			<h3>Foods:</h3>
+			<ul>
+				<li>Omelets</li>
+				<li>Pancakes</li>
+				<li>Bacon and Croissant</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="restaurant">
+		<div class="image-box">Image Placeholder</div>
+		<h2>Burger Queen</h2>
+		<div class="menu">
+			<h3>Foods:</h3>
+			<ul>
+				<li>Veggie Burger</li>
+				<li>Classic Beef Burger</li>
+				<li>Fries</li>
+			</ul>
+		</div>
+	</div>
+
+	<button class="back-btn" onclick="goBack()">← Back to Homepage</button>
+
+	<!-- ---------- SCRIPTS ---------- -->
+	<script>
+    function search() {
+      const rawQuery = document.getElementById('search').value.trim();
+      const lowerQuery = rawQuery.toLowerCase();
+      const messageElement = document.getElementById('searchResultsMessage');
+
+      messageElement.textContent = rawQuery ? `Showing results for: "${rawQuery}"` : "";
+
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        card.style.display = (rawQuery === "" || name.includes(lowerQuery)) ? 'block' : 'none';
+      });
+    }
+
+    function browseRestaurants() {
+      alert("Loading restaurants...");
+    }
+
+    function goBack() {
+      window.location.href = "MainApp.html";
+    }
+  </script>
+
+	<!-- ===== FOOTER SECTION ===== -->
+	<footer>
+		<div class="footer-content">
+			<p>
+				<strong>Contact Us:</strong> <a href="mailto:nofoodlb@gmail.com">nofoodlb@gmail.com</a>
+			</p>
+			<p>2025 No Food Left Behind</p>
+		</div>
+	</footer>
+
+</body>
+</html>

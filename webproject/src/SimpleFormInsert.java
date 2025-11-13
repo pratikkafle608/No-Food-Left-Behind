@@ -1,4 +1,3 @@
-
 /**
  * @file SimpleFormInsert.java
  */
@@ -20,7 +19,6 @@ public class SimpleFormInsert extends HttpServlet {
    public SimpleFormInsert() {
       super();
    }
-
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       String userName = request.getParameter("userName");
       String email = request.getParameter("email");

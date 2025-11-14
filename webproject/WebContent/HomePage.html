@@ -11,6 +11,7 @@ body {
 	color: #1f3d2c;
 }
 
+<<<<<<< HEAD
 /* image box styling */
 .img-box {
 	width: 100%;
@@ -24,6 +25,38 @@ body {
 	overflow: hidden;
 	border-radius: 4px;
 }
+=======
+    /* image box styling */
+    .img-box {
+      width: 100%;
+      height: 130px;
+      background-color: #e8e6e0;
+      border: 2px dashed #1f3d2c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.8rem;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    /* nav bar styling */
+    nav {
+      background-color: #1f3d2c;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+    }
+>>>>>>> 08dd80321a3a4ee1e4dcf8b28d3bbb268f3d96b7
 
 .img-box img {
 	width: 100%;
@@ -92,9 +125,23 @@ nav {
 	font-family: "Georgia", serif;
 }
 
+<<<<<<< HEAD
 .search-bar button:hover {
 	background-color: #b2d4bf;
 }
+=======
+    /* restaurant cards */
+    .restaurants {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+>>>>>>> 08dd80321a3a4ee1e4dcf8b28d3bbb268f3d96b7
 
 header {
 	text-align: center;
@@ -116,6 +163,7 @@ header {
 	padding: 2rem;
 }
 
+<<<<<<< HEAD
 .card {
 	width: 200px;
 	padding: 1rem;
@@ -129,6 +177,12 @@ header {
 .card:hover {
 	transform: translateY(-5px);
 }
+=======
+    .card h3 {
+      font-size: 1.1rem;
+      margin: 0.5rem 0 0;
+    }
+>>>>>>> 08dd80321a3a4ee1e4dcf8b28d3bbb268f3d96b7
 
 .card h3 {
 	font-size: 1.1rem;
@@ -166,9 +220,15 @@ header {
 </head>
 <body>
 
+<<<<<<< HEAD
 	<!-- Navigation bar -->
 	<nav>
 		<div class="logo">No Food Left Behind</div>
+=======
+  <!-- Navigation bar -->
+  <nav>
+    <div class="logo">No Food Left Behind</div>
+>>>>>>> 08dd80321a3a4ee1e4dcf8b28d3bbb268f3d96b7
 
 		<ul class="nav-links">
 			<li><a href="MainApp.html">Home</a></li>
@@ -222,6 +282,10 @@ header {
   <button class="browse-btn" onclick="browseRestaurants()">Browse more</button>
 
   <script>
+<<<<<<< HEAD
+=======
+    // Search function
+>>>>>>> 08dd80321a3a4ee1e4dcf8b28d3bbb268f3d96b7
     function search() {
       const rawQuery = document.getElementById('search').value.trim();
       const lowerQuery = rawQuery.toLowerCase();
@@ -236,6 +300,10 @@ header {
       });
     }
 
+<<<<<<< HEAD
+=======
+    // Browse restaurants function
+>>>>>>> 08dd80321a3a4ee1e4dcf8b28d3bbb268f3d96b7
     function browseRestaurants() {
       alert("Loading restaurants...");
     }

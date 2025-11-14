@@ -84,7 +84,6 @@
     <button onclick="openInNewTab()">Open in New Tab</button>
   </div>
 
-  <!-- Simple iframe approach that always works -->
   <iframe id="restaurantFrame" src="RestaurantView" title="Restaurant List"></iframe>
 </div>
 
@@ -97,7 +96,7 @@ function openInNewTab() {
     window.open('RestaurantView', '_blank');
 }
 
-// Test if servlet is accessible
+// Testing the servelet and itS accessibility
 fetch('RestaurantView')
     .then(response => {
         console.log('Servlet status:', response.status);

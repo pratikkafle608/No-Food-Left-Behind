@@ -39,7 +39,7 @@ public class Restaurant extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         
-        // Retrieve form parameters
+        // Retrieve information from parameters from the form from UI called signup.html
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         String addressState = request.getParameter("addressState");
@@ -48,7 +48,7 @@ public class Restaurant extends HttpServlet {
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
 
-        // Debug: Print received parameters
+        // Print received parameters for the users to see illustrate the backend
         System.out.println("=== REGISTRATION ATTEMPT ===");
         System.out.println("Username: " + userName);
         System.out.println("Password: " + password);
@@ -69,19 +69,19 @@ public class Restaurant extends HttpServlet {
         try {
             out.println(getStyledHeader("Registration Status"));
 
-            // Load MySQL JDBC driver
+            // Load MySQL JDBC driver 
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("MySQL JDBC Driver loaded successfully");
 
-            // Establish connection
+            // Establish connection to verify the connection
             conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             System.out.println("Database connection established");
 
-            // SQL insert query - matches your exact table structure
+            // SQL insert query that matches exact table structure and its attributes
             String sql = "INSERT INTO Restaurant (User_name, Password, Address_State, Address_Street_Line, Address_ZIP, Email_address, Phone) VALUES (?, ?, ?, ?, ?, ?, ?)";
             stmt = conn.prepareStatement(sql);
 
-            // Set parameters according to table structure
+            // Set parameters according to table structure for username, passwrd and address street, state and zip-code
             stmt.setString(1, userName.trim()); // User_name varchar(20) NOT NULL
             stmt.setString(2, password.trim()); // Password varchar(20) NOT NULL
             stmt.setString(3, addressState.trim().toUpperCase()); // Address_State varchar(2) NOT NULL

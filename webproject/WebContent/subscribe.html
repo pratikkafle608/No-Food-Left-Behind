@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login | No Food Left Behind</title>
+  <title>Subscribe | No Food Left Behind</title>
   <style>
     body {
       font-family: "Georgia", serif;
@@ -105,6 +105,7 @@
       display: block;
       margin-top: 1rem;
       font-weight: bold;
+      text-align: left; /* Adjusted for better form alignment */
     }
 
     input[type="email"],
@@ -116,6 +117,7 @@
       border-radius: 4px;
       font-family: "Georgia", serif;
       font-size: 1rem;
+      box-sizing: border-box; /* Ensures padding doesn't affect total width */
     }
 
     button {
@@ -135,16 +137,6 @@
       background-color: #305a43;
     }
 
-    .form-footer {
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .form-footer a {
-      color: #1f3d2c;
-      text-decoration: underline;
-    }
-
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
@@ -160,7 +152,6 @@
 
 <body>
 
-  <!-- nav bar styling -->
   <nav>
     <div class="logo">No Food Left Behind</div>
 
@@ -169,10 +160,10 @@
       <li><a href="AddFood.html">Add Food</a></li>
       <li><a href="BrowseFood.html">Browse Food</a></li>
       <li><a href="Join.html">Join</a></li>
-     <!-- <li><a href="Login.html">Login</a></li> -->
-      <li><a href="simpleFormInsert.html">Insert Form</a></li>
+      <li><a href="SignupSearch.html">Restaurants</a></li>
+     <!-- <li><a href="simpleFormInsert.html">Insert Form</a></li>
       <li><a href="subscribe.html">Subscribe</a></li>
-    </ul>
+      <li><a href="Subscriptions">View Subscribers</a></li> </ul> -->
 
     <div class="search-bar">
       <input type="text" id="search" placeholder="Search restaurants...">
@@ -183,25 +174,16 @@
   
   <header>For Customers</header>
 
-  <!-- Login for the restaurants that are aleady signed up -->
   <div class="form-container">
     <h2>Subscribe for updates and discounts</h2>
-    <form action="SimpleFormSearch" method="post">
-     <!--   <label for="subscriberId">Subscriber Id:</label>
-      <input type="text" id="subscriberId" name="subscriberId" required>-->
+    
+    <form action="Users" method="post">
       
       <label for="email">Email Address:</label>
       <input type="email" id="email" name="email" required>
       
-      <!--  <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>-->
+      <button type="submit">Subscribe</button>
 
-      <a href="AddFood.html"><button type="submit">Subscribe</button></a>
-
-      <!--<div class="form-footer">
-        <p>Don’t have an account? <a href="Signup.html">Sign Up Here</a></p>
-      </div> -->
-      
     </form>
   </div>
 
@@ -211,7 +193,9 @@
       if (!query) {
         alert("Please enter something to search!");
       } else {
-        window.location.href = "simpleFormSearch.html?query=" + encodeURIComponent(query);
+        // NOTE: If you have a servlet that handles this search, update the target below.
+        // Assuming 'SignupSearch.html' handles the search display based on your original context.
+        window.location.href = "SignupSearch.html?query=" + encodeURIComponent(query);
       }
     }
   </script>

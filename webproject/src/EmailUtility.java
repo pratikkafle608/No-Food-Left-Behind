@@ -4,9 +4,13 @@ import jakarta.mail.internet.*;
 
 public class EmailUtility {
 
+    public static final String DB_URL = "jdbc:mysql://ec2-3-141-40-94.us-east-2.compute.amazonaws.com:3306/no_food_left_behind";
+    public static final String DB_USER = "remoteSql";
+    public static final String DB_PASSWORD = "remotePassword1";
+
     public static void sendEmail(String recipient, String subject, String messageText) throws MessagingException {
         final String fromEmail = "nofoodlb@gmail.com"; //my email id
-        final String password = "capstone2025";    //my email password for nofoodlb@gmail.com
+        final String password = "qxjrfmjrthtxaerg";    //my email password for nofoodlb@gmail.com
 
         // Configure mail properties
         Properties props = new Properties();

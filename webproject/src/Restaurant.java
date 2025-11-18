@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class Restaurant extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    // Database credentials
+    // Database credentials db url in ec2, db user and password
     private static final String DB_URL = "jdbc:mysql://ec2-3-141-40-94.us-east-2.compute.amazonaws.com:3306/no_food_left_behind";
     private static final String DB_USER = "remoteSql";
     private static final String DB_PASSWORD = "remotePassword1";
@@ -40,6 +40,7 @@ public class Restaurant extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         // Retrieve information from parameters from the form from UI called signup.html
+        String imageSource = request.getParameter("imageSource");        
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         String addressState = request.getParameter("addressState");
@@ -50,6 +51,8 @@ public class Restaurant extends HttpServlet {
 
         // Print received parameters for the users to see illustrate the backend
         System.out.println("=== REGISTRATION ATTEMPT ===");
+        
+        System.out.println("Image: " + imageSource);
         System.out.println("Username: " + userName);
         System.out.println("Password: " + password);
         System.out.println("State: " + addressState);

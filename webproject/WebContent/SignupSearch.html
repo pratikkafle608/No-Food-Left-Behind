@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>View Registered Restaurants</title>
   <style>
     body {
@@ -14,7 +14,10 @@
     nav {
       background-color: #1f3d2c;
       color: white;
-      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
     }
     .nav-links {
       display: flex;
@@ -26,86 +29,155 @@
     .nav-links a {
       color: white;
       text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #c7e0d0;
     }
     .container {
       padding: 30px;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
+    }
+    h2 {
       text-align: center;
+      margin-bottom: 30px;
+      font-weight: bold;
     }
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin: 20px 0;
+
+    /* Grid container for boxes: 3 per row */
+    .restaurant-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
-    .instructions {
-      background: white;
+
+    /* Individual restaurant box styling */
+    .restaurant-box {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
       padding: 20px;
-      border-radius: 10px;
-      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: box-shadow 0.3s ease;
     }
-    button {
-      background-color: #1f3d2c;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 5px;
+    .restaurant-box:hover {
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    /* Field label style */
+    .field-label {
+      font-weight: 700;
+      margin-right: 8px;
+      color: #1f3d2c;
+      min-width: 100px;
+      display: inline-block;
+    }
+
+    /* Field container */
+    .field {
+      display: flex;
+      align-items: center;
+      font-size: 14.5px;
+      color: #2f4f3f;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .restaurant-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .restaurant-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
+
 <nav>
-    <div class="logo">No Food Left Behind</div>
-    <ul class="nav-links">
-      <li><a href="MainApp.html">Home</a></li>
-      <li><a href="Signup.html">Register Restaurant</a></li>
-      <li><a href="SignupSearch.html">View Restaurants</a></li>
-    </ul>
+  <div class="logo" style="font-size: 1.5rem; font-weight: bold;">No Food Left Behind</div>
+  <ul class="nav-links">
+    <li><a href="MainApp.html">Home</a></li>
+    <li><a href="Signup.html">Register Restaurant</a></li>
+    <li><a href="RestaurantView">Restaurants</a></li>
+    <li><a href="AddFood.html">Add Food</a></li>
+    <li><a href="BrowseFood.html">Browse Food</a></li>
+  </ul>
 </nav>
 
 <div class="container">
-  <h2>View Registered Restaurants</h2>
-  
-  <div class="instructions">
-    <p>Below is the list of all registered restaurants. If you don't see any data, make sure:</p>
-    <ul style="text-align: left; display: inline-block;">
-      <li>The RestaurantView servlet is deployed</li>
-      <li>Database connection is working</li>
-      <li>There are restaurants registered in the system</li>
-    </ul>
-  </div>
+  <h2>Registered Restaurants</h2>
 
-  <div>
-    <button onclick="refreshView()">Refresh View</button>
-    <button onclick="openInNewTab()">Open in New Tab</button>
-  </div>
+  <div class="restaurant-grid">
+    <!-- Example static boxes, replace with dynamic generation as needed -->
+    <div class="restaurant-box">
+      <div class="field"><span class="field-label">ID:</span>9</div>
+      <div class="field"><span class="field-label">Username:</span>Reggies</div>
+      <div class="field"><span class="field-label">State:</span>TX</div>
+      <div class="field"><span class="field-label">Street Address:</span>301 main Street Drive</div>
+      <div class="field"><span class="field-label">ZIP Code:</span>75501</div>
+      <div class="field"><span class="field-label">Email:</span>reggies@gmail.com</div>
+      <div class="field"><span class="field-label">Phone:</span>44444444444</div>
+    </div>
 
-  <iframe id="restaurantFrame" src="RestaurantView" title="Restaurant List"></iframe>
+    <div class="restaurant-box">
+      <div class="field"><span class="field-label">ID:</span>8</div>
+      <div class="field"><span class="field-label">Username:</span>restaurant100</div>
+      <div class="field"><span class="field-label">State:</span>TX</div>
+      <div class="field"><span class="field-label">Street Address:</span>4312 east street</div>
+      <div class="field"><span class="field-label">ZIP Code:</span>75501</div>
+      <div class="field"><span class="field-label">Email:</span>resrautant100@gmail.com</div>
+      <div class="field"><span class="field-label">Phone:</span>430-435-4818</div>
+    </div>
+
+    <div class="restaurant-box">
+      <div class="field"><span class="field-label">ID:</span>7</div>
+      <div class="field"><span class="field-label">Username:</span>restaurantCasa</div>
+      <div class="field"><span class="field-label">State:</span>TX</div>
+      <div class="field"><span class="field-label">Street Address:</span>7101 State Line</div>
+      <div class="field"><span class="field-label">ZIP Code:</span>75503</div>
+      <div class="field"><span class="field-label">Email:</span>casa@gmail.com</div>
+      <div class="field"><span class="field-label">Phone:</span>430-435-4818</div>
+    </div>
+
+    <div class="restaurant-box">
+      <div class="field"><span class="field-label">ID:</span>6</div>
+      <div class="field"><span class="field-label">Username:</span>restaurant07</div>
+      <div class="field"><span class="field-label">State:</span>TX</div>
+      <div class="field"><span class="field-label">Street Address:</span>7101 University Avenue</div>
+      <div class="field"><span class="field-label">ZIP Code:</span>75503</div>
+      <div class="field"><span class="field-label">Email:</span>pratikkafle608@gmail.com</div>
+      <div class="field"><span class="field-label">Phone:</span>4304354818</div>
+    </div>
+
+    <div class="restaurant-box">
+      <div class="field"><span class="field-label">ID:</span>5</div>
+      <div class="field"><span class="field-label">Username:</span>lalitCuisine</div>
+      <div class="field"><span class="field-label">State:</span>NY</div>
+      <div class="field"><span class="field-label">Street Address:</span>1234 nyc broad st</div>
+      <div class="field"><span class="field-label">ZIP Code:</span>34421</div>
+      <div class="field"><span class="field-label">Email:</span>lkp@gmail.com</div>
+      <div class="field"><span class="field-label">Phone:</span>430-435-8991</div>
+    </div>
+
+    <div class="restaurant-box">
+      <div class="field"><span class="field-label">ID:</span>4</div>
+      <div class="field"><span class="field-label">Username:</span>restaurant2</div>
+      <div class="field"><span class="field-label">State:</span>TX</div>
+      <div class="field"><span class="field-label">Street Address:</span>700 uni avenue</div>
+      <div class="field"><span class="field-label">ZIP Code:</span>75501</div>
+      <div class="field"><span class="field-label">Email:</span>kpratik@gmail.com</div>
+      <div class="field"><span class="field-label">Phone:</span>430-435-4818</div>
+    </div>
+    <!-- Add more boxes as needed -->
+  </div>
 </div>
 
-<script>
-function refreshView() {
-    document.getElementById('restaurantFrame').src = 'RestaurantView';
-}
-
-function openInNewTab() {
-    window.open('RestaurantView', '_blank');
-}
-
-// Testing the servelet and itS accessibility
-fetch('RestaurantView')
-    .then(response => {
-        console.log('Servlet status:', response.status);
-    })
-    .catch(error => {
-        console.error('Servlet not accessible:', error);
-        document.querySelector('.instructions').innerHTML += 
-            '<div style="color: red; margin-top: 10px;">Warning: Servlet may not be accessible. Check server deployment.</div>';
-    });
-</script>
 </body>
 </html>

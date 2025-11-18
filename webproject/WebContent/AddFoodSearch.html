@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Browse Food Items</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color: #f9f7f1;
+      color: #1f3d2c;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background-color: #1f3d2c;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #c7e0d0;
+    }
+    .container {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    /* Grid container for boxes: 3 per row */
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    /* Individual food box styling */
+    .food-box {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: box-shadow 0.3s ease;
+    }
+    .food-box:hover {
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    /* Field label style */
+    .field-label {
+      font-weight: 700;
+      margin-right: 8px;
+      color: #1f3d2c;
+      min-width: 100px;
+      display: inline-block;
+    }
+
+    /* Field container */
+    .field {
+      display: flex;
+      align-items: center;
+      font-size: 14.5px;
+      color: #2f4f3f;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .food-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .food-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo" style="font-size: 1.5rem; font-weight: bold;">No Food Left Behind</div>
+  <ul class="nav-links">
+    <li><a href="MainApp.html">Home</a></li>
+    <li><a href="Signup.html">Register Restaurant</a></li>
+    <li><a href="RestaurantView">Restaurants</a></li>
+    <li><a href="AddFood.html">Add Food</a></li>
+    <li><a href="BrowseFood.html">Browse Food</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h2>Available Food Items</h2>
+
+  <div class="food-grid" id="food-grid">
+    <!-- Food items will be populated here via JavaScript -->
+  </div>
+</div>
+
+<script>
+  // Function to fetch food data from the database via API
+  async function fetchFoodItems() {
+    try {
+      const response = await fetch('/api/food'); // Replace with your actual API endpoint
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const foodItems = await response.json();
+      displayFoodItems(foodItems);
+    } catch (error) {
+      console.error('Error fetching food items:', error);
+      document.getElementById('food-grid').innerHTML = '<p>Error loading food items. Please try again later.</p>';
+    }
+  }
+
+  // Function to display food items in the grid
+  function displayFoodItems(items) {
+    const grid = document.getElementById('food-grid');
+    grid.innerHTML = ''; // Clear any existing content
+
+    if (items.length === 0) {
+      grid.innerHTML = '<p>No food items available.</p>';
+      return;
+    }
+
+    items.forEach(item => {
+      const foodBox = document.createElement('div');
+      foodBox.className = 'food-box';
+
+      foodBox.innerHTML = `
+        <div class="field"><span class="field-label">ID:</span>${item.id}</div>
+        <div class="field"><span class="field-label">Name:</span>${item.name}</div>
+        <div class="field"><span class="field-label">Description:</span>${item.description}</div>
+        <div class="field"><span class="field-label">Quantity:</span>${item.quantity}</div>
+        <div class="field"><span class="field-label">Expiration:</span>${item.expiration_date}</div>
+        <div class="field"><span class="field-label">Restaurant:</span>${item.restaurant}</div>
+      `;
+
+      grid.appendChild(foodBox);
+    });
+  }
+
+  // Fetch and display food items when the page loads
+  window.onload = fetchFoodItems;
+</script>
+
+</body>
+</html>

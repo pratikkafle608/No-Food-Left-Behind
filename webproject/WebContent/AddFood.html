@@ -1,192 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Add Food | No Food Left Behind</title>
+  <meta charset="UTF-8" />
+  <title>Add Food Item</title>
   <style>
-    body {
-      font-family: "Georgia", serif;
-      margin: 0;
-      background-color: #f9f7f1;
-      color: #1f3d2c;
-    }
-
-    /* same nav bar styling copied from the home page */
-    nav {
-      background-color: #1f3d2c;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 2rem;
-    }
-
-    .logo {
-      font-size: 1.3rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: #c7e0d0;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 0 1rem;
-      font-size: 1.8rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    /* styling for adding food for restaurants */
-    .form-container {
-      background-color: #fffdf8;
-      border: 2px solid #1f3d2c;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 2rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-
-    .form-group {
-      margin-bottom: 1.3rem;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.4rem;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 0.6rem;
-      border: 1.5px solid #1f3d2c;
-      border-radius: 6px;
-      font-family: "Georgia", serif;
-      font-size: 1rem;
-      background-color: #fefcf8;
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #305a43;
-      background-color: #fff;
-    }
-
-    .image-placeholder {
-      width: 100%;
-      height: 180px;
-      background-color: #e8e6e0;
-      border: 2px dashed #1f3d2c;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-    }
-
-    button {
-      background-color: #1f3d2c;
-      color: white;
-      border: none;
-      padding: 0.8rem 1.8rem;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      font-family: "Georgia", serif;
-      display: block;
-      margin: 1.5rem auto 0;
-    }
-
-    button:hover {
-      background-color: #305a43;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-      .form-container {
-        padding: 1.5rem;
-      }
-    }
+    body { font-family: Georgia, serif; background-color: #f9f7f1; color: #1f3d2c; margin: 0; padding: 0; }
+    nav { background-color: #1f3d2c; color: white; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 2rem; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { color: white; text-decoration: none; font-size: 1rem; }
+    .nav-links a:hover { color: #c7e0d0; }
+    .container { padding: 30px; max-width: 600px; margin: 0 auto; }
+    form { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+    label { display: block; margin-bottom: 8px; font-weight: bold; }
+    input { width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
+    button { background: #1f3d2c; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #305a43; }
   </style>
 </head>
 <body>
-
-  <!-- Nav bar html since it is static around different pages same code -->
   <nav>
-    <div class="logo">No Food Left Behind</div>
-
+    <div class="logo" style="font-size: 1.5rem; font-weight: bold;">No Food Left Behind</div>
     <ul class="nav-links">
       <li><a href="MainApp.html">Home</a></li>
-      <li><a href="BrowseFood.html">Available Foods</a></li>
+      <li><a href="Signup.html">Register Restaurant</a></li>
+      <li><a href="RestaurantView">Restaurants</a></li>
       <li><a href="AddFood.html">Add Food</a></li>
+      <li><a href="AddFoodServlet">Browse Food</a></li>  <!-- Changed to servlet -->
     </ul>
   </nav>
-
-  <header>Add Food (Restaurant Portal)</header>
-
-  <!-- adding Excess food for giving away or discounted rate -->
-  <div class="form-container">
-    <div class="form-group">
-      <label for="restaurantId">Restaurant ID</label>
-      <input type="text" id="restaurantId" placeholder="Enter your restaurant Id">
-    </div>
-
-    <div class="form-group">
-      <label for="foodId">Food ID</label>
-      <input type="text" id="foodId" placeholder="Enter food id">
-    </div>
-    
-    <div class="form-group">
-      <label for="foodName">Food Name</label>
-      <input type="text" id="foodName" placeholder="Enter food Name">
-    </div>
-
-    <div class="form-group">
-      <label for="discount">Discount</label>
-      <input type="text" id="discount" placeholder="Discount percentage">
-    </div>
-
-    <div class="form-group">
-      <label for="pickupTime">Pickup Time</label>
-	  <input type="text" id="pickupTime" placeholder="00:00">
-    </div>
-
-    <button type="button" onclick="addFood()">Add Food</button>
+  <div class="container">
+    <h2>Add a Food Item</h2>
+    <!-- FIXED: Changed action from "AddFoodServlet" to "AddFood" -->
+    <form action="AddFood" method="post">
+      <label for="restaurantId">Restaurant ID:</label>
+      <input type="text" id="restaurantId" name="restaurantId" required />
+      
+      <label for="foodName">Food Name:</label>
+      <input type="text" id="foodName" name="foodName" required />
+      
+      <label for="discount">Discount:</label>
+      <input type="text" id="discount" name="discount" required />
+      
+      <label for="pickupTime">Pickup Time (optional):</label>
+      <input type="text" id="pickupTime" name="pickTime" />  <!-- Note: parameter name is pickTime -->
+      
+      <button type="submit">Add Food Item</button>
+    </form>
   </div>
-
-  <script>
-    function addFood() {
-      alert("Food added successfully (UI only).");
-    }
-  </script>
-
 </body>
 </html>

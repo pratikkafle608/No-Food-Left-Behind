@@ -1,233 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Food Browsing | No Food Left Behind</title>
-  <style>
-    body {
-      font-family: "Georgia", serif;
-      margin: 0;
-      background-color: #f9f7f1;
-      color: #1f3d2c;
-    }
+<meta charset="UTF-8">
+<title>Food Browsing | No Food Left Behind</title>
+<style>
+body {
+	font-family: "Georgia", serif;
+	margin: 0;
+	background-color: #f9f7f1;
+	color: #1f3d2c;
+}
 
-    /* Navigation Bar */
-    nav {
-      background-color: #1f3d2c;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 2rem;
-    }
+/* Navigation Bar */
+nav {
+	background-color: #1f3d2c;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.8rem 2rem;
+}
 
-    .logo {
-      font-size: 1.3rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
+.logo {
+	font-size: 1.3rem;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+.nav-links {
+	display: flex;
+	gap: 1.5rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
+.nav-links a {
+	color: white;
+	text-decoration: none;
+	font-size: 1rem;
+	transition: color 0.3s;
+}
 
-    .nav-links a:hover {
-      color: #c7e0d0;
-    }
+.nav-links a:hover {
+	color: #c7e0d0;
+}
 
-    .search-bar {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+.search-bar {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
 
-    .search-bar input {
-      padding: 0.4rem 0.7rem;
-      border-radius: 4px;
-      border: none;
-      font-family: "Georgia", serif;
-      font-size: 0.9rem;
-    }
+.search-bar input {
+	padding: 0.4rem 0.7rem;
+	border-radius: 4px;
+	border: none;
+	font-family: "Georgia", serif;
+	font-size: 0.9rem;
+}
 
-    .search-bar button {
-      background-color: #c7e0d0;
-      color: #1f3d2c;
-      border: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      font-family: "Georgia", serif;
-    }
+.search-bar button {
+	background-color: #c7e0d0;
+	color: #1f3d2c;
+	border: none;
+	padding: 0.4rem 0.8rem;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	font-family: "Georgia", serif;
+}
 
-    .search-bar button:hover {
-      background-color: #b2d4bf;
-    }
+.search-bar button:hover {
+	background-color: #b2d4bf;
+}
 
-    /* Page Header */
-    header {
-      text-align: center;
-      padding: 2rem 0 1rem;
-      font-size: 1.8rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
+/* Page Header */
+header {
+	text-align: center;
+	padding: 2rem 0 1rem;
+	font-size: 1.8rem;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
 
-    /* Restaurant Section */
-    .restaurant {
-      max-width: 700px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background-color: #fffdf8;
-      border: 2px solid #1f3d2c;
-      border-radius: 10px;
-      text-align: center;
-    }
+/* Restaurant Section */
+.restaurant {
+	max-width: 700px;
+	margin: 2rem auto;
+	padding: 2rem;
+	background-color: #fffdf8;
+	border: 2px solid #1f3d2c;
+	border-radius: 10px;
+	text-align: center;
+}
 
-    .image-box {
-      width: 200px;
-      height: 200px;
-      margin: 0 auto 1rem;
-      background-color: #e8e6e0;
-      border: 3px dashed #1f3d2c;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 0.9rem;
-      border-radius: 6px;
-    }
+.image-box {
+	width: 200px;
+	height: 200px;
+	margin: 0 auto 1rem;
+	background-color: #e8e6e0;
+	border: 3px dashed #1f3d2c;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #666;
+	font-size: 0.9rem;
+	border-radius: 6px;
+}
 
-    .restaurant h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      font-weight: bold;
-    }
+.restaurant h2 {
+	font-size: 1.8rem;
+	margin-bottom: 1.5rem;
+	font-weight: bold;
+}
 
-    .menu {
-      text-align: left;
-      max-width: 400px;
-      margin: 0 auto;
-    }
+.menu {
+	text-align: left;
+	max-width: 400px;
+	margin: 0 auto;
+}
 
-    .menu h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
+.menu h3 {
+	font-size: 1.1rem;
+	margin-bottom: 0.5rem;
+}
 
-    .menu ul {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-      line-height: 1.6;
-      font-size: 1rem;
-    }
+.menu ul {
+	list-style-type: disc;
+	padding-left: 1.5rem;
+	line-height: 1.6;
+	font-size: 1rem;
+}
 
-    .back-btn {
-      display: block;
-      margin: 3rem auto 1rem;
-      background-color: #1f3d2c;
-      color: white;
-      padding: 0.7rem 2rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
+.back-btn {
+	display: block;
+	margin: 3rem auto 1rem;
+	background-color: #1f3d2c;
+	color: white;
+	padding: 0.7rem 2rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+}
 
-    .back-btn:hover {
-      background-color: #305a43;
-    }
+.back-btn:hover {
+	background-color: #305a43;
+}
 
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-      .restaurant {
-        margin: 1rem;
-      }
-    }
-  </style>
+@media ( max-width : 768px) {
+	nav {
+		flex-direction: column;
+		gap: 0.8rem;
+	}
+	.restaurant {
+		margin: 1rem;
+	}
+}
+</style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <div class="logo">No Food Left Behind</div>
+	<!-- Navigation Bar -->
+	<nav>
+		<div class="logo">No Food Left Behind</div>
 
-    <ul class="nav-links">
-      <li><a href="MainApp.html">Home</a></li>
-      <li><a href="BrowseFood.html">Available Foods</a></li>
-      <li><a href="AddFood.html">Add Food</a></li>
-    </ul>
-  </nav>
-<nav>
-    <div class="search-bar">
-      <input type="text" id="search" placeholder="Search foods...">
-      <button onclick="search()">Search</button>
-    </div>
-  </nav>
+		<ul class="nav-links">
+			<li><a href="MainApp.html">Home</a></li>
+			<li><a href="BrowseFood.html">Available Foods</a></li>
+			<li><a href="AddFood.html">Add Food</a></li>
+			<li><a href="SignupSearch.html">Restaurants</a></li>
+		</ul>
+	</nav>
+	<nav>
+		<div class="search-bar">
+			<input type="text" id="search" placeholder="Search foods...">
+			<button onclick="search()">Search</button>
+		</div>
+	</nav>
 
-  <header>Food Available for Giveaway</header>
+	<header>Food Available for Giveaway</header>
 
-  <!-- Example Restaurant -->
-  <div class="restaurant">
-    <div class="image-box">Image Placeholder</div>
-    <h2>Eye-Pop</h2>
+	<!-- Example Restaurant -->
+	<div class="restaurant">
+		<div class="image-box">Image Placeholder</div>
+		<h2>Eye-Pop</h2>
 
-    <div class="menu">
-      <h3>Foods:</h3>
-      <ul>
-        <li>Omelets</li>
-        <li>Pancakes</li>
-        <li>Bacon and Croissant</li>
-      </ul>
-    </div>
-  </div>
+		<div class="menu">
+			<h3>Foods:</h3>
+			<ul>
+				<li>Omelets</li>
+				<li>Pancakes</li>
+				<li>Bacon and Croissant</li>
+			</ul>
+		</div>
+	</div>
 
-  <div class="restaurant">
-    <div class="image-box">Image Placeholder</div>
-    <h2>Burger Queen</h2>
+	<div class="restaurant">
+		<div class="image-box">Image Placeholder</div>
+		<h2>Burger Queen</h2>
 
-    <div class="menu">
-      <h3>Foods:</h3>
-      <ul>
-        <li>Veggie Burger</li>
-        <li>Classic Beef Burger</li>
-        <li>Fries</li>
-      </ul>
-    </div>
-  </div>
+		<div class="menu">
+			<h3>Foods:</h3>
+			<ul>
+				<li>Veggie Burger</li>
+				<li>Classic Beef Burger</li>
+				<li>Fries</li>
+			</ul>
+		</div>
+	</div>
 
-  <button class="back-btn" onclick="goBack()">← Back to Homepage</button>
-
-  <script>
-    function goBack() {
+	<a href="MainApp.html">
+		<button class="back-btn">Back to Homepage</button>
+	</a>
+	 <script>
+	 <!--function goBack() {
       alert("Going back to homepage...");
       // You can replace alert with: window.location.href = "index.html";
-    }
+    } -->
 
-    function search() {
-      const term = document.getElementById('search').value;
-      if (term.trim() === "") {
-        alert("Please enter a food or restaurant to search.");
-      } else {
-        alert("Searching for: " + term);
-      }
-    }
-  </script>
+	function search() { const term =
+	document.getElementById('search').value; if (term.trim() === "") {
+	alert("Please enter a food or restaurant to search."); } else {
+	alert("Searching for: " + term); } }
+	</script>
 
 </body>
 </html>

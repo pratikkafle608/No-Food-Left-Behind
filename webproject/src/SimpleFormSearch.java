@@ -1,4 +1,4 @@
-import java.io.IOException;
+/** import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -96,4 +96,4 @@ public class SimpleFormSearch extends HttpServlet {
       doGet(request, response);
    }
 
-}
+} **/

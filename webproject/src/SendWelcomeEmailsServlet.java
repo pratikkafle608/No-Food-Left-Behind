@@ -6,62 +6,64 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/SendWelcomeEmailsServlet")
+@WebServlet("/SendWelcomeEmails")
 public class SendWelcomeEmailsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
-    // Database connection info
-    private static final String DB_URL = "jdbc:mysql://ec2-3-141-40-94.us-east-2.compute.amazonaws.com:3306/no_food_left_behind";
-    private static final String DB_USER = "remoteSql";
-    private static final String DB_PASSWORD = "remotePassword1";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().println("<html><body>");
 
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
-            // Connect to DB
+            // Connect to DB using credentials from EmailUtility
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            conn = DriverManager.getConnection(EmailUtility.DB_URL, EmailUtility.DB_USER, EmailUtility.DB_PASSWORD);
 
-            String query = "SELECT User_email FROM Subscriber";
+            String query = "SELECT Subscriber_ID, User_email FROM Subscriber";
             stmt = conn.prepareStatement(query);
             rs = stmt.executeQuery();
 
             // Loop through all emails
-            int count = 0;
+            int successCount = 0;
+            int failCount = 0;
             while (rs.next()) {
                 String email = rs.getString("User_email");
+                int id = rs.getInt("Subscriber_ID");
 
                 try {
-                    // Send email
+                    // Send welcome email using EmailUtility
                     EmailUtility.sendEmail(
                         email,
-                        "Welcome to the Food Community!",
-                        "Welcome to the food community! We’re glad to have you with us. Together we can make a difference by reducing food waste."
+                        "Welcome to No Food Left Behind!",
+                        "Dear Subscriber,\n\nWelcome to the No Food Left Behind community! We're excited to have you join us in our mission to reduce food waste. You'll receive updates on available food donations, tips, and special offers.\n\nStay connected and make a difference!\n\nBest regards,\nThe No Food Left Behind Team"
                     );
-                    count++;
+                    successCount++;
+                    response.getWriter().println("<p>✅ Email sent to: " + email + " (ID: " + id + ")</p>");
                 } catch (Exception e) {
+                    failCount++;
+                    response.getWriter().println("<p>❌ Failed to send to: " + email + " (ID: " + id + ") - " + e.getMessage() + "</p>");
                     e.printStackTrace();
-                    System.out.println("❌ Failed to send to: " + email);
                 }
             }
 
-            response.setContentType("text/html");
-            response.getWriter().println("<h3>✅ Successfully sent " + count + " welcome emails!</h3>");
+            response.getWriter().println("<h3>Summary: " + successCount + " emails sent successfully, " + failCount + " failed.</h3>");
 
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error sending emails: " + e.getMessage());
+            response.getWriter().println("<h3>❌ Error: " + e.getMessage() + "</h3>");
         } finally {
             // Clean up JDBC resources
             try { if (rs != null) rs.close(); } catch (SQLException ignored) {}
             try { if (stmt != null) stmt.close(); } catch (SQLException ignored) {}
             try { if (conn != null) conn.close(); } catch (SQLException ignored) {}
+            response.getWriter().println("</body></html>");
         }
     }
 }

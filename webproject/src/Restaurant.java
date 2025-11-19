@@ -144,6 +144,11 @@ public class Restaurant extends HttpServlet {
                 }
                 out.println("<tr><td><strong>Email:</strong></td><td>" + email + "</td></tr>");
                 out.println("<tr><td><strong>Phone:</strong></td><td>" + phone + "</td></tr>");
+                
+                if (imageSource != null && !imageSource.trim().isEmpty()) {
+                    out.println("<tr><td><strong>Image:</strong></td><td><img src='" + imageSource + "' alt='Restaurant Image' style='max-width: 100px; max-height: 100px; border-radius: 5px;'></td></tr>");
+                }
+                
                 out.println("</table>");
                 out.println("</div>");
                 out.println("</div>");

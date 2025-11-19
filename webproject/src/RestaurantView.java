@@ -47,17 +47,26 @@ public class RestaurantView extends HttpServlet {
                 out.println("<div class='card'>");
                 
                 String img = rs.getString("image_source");
-
+                
+                // Debug output
+                out.println("<!-- DEBUG: Image path = " + (img != null ? img : "NULL") + " -->");
+                System.out.println("Image path from DB for Restaurant " + rs.getInt("Restaurant_ID") + ": " + img);
+                
                 if (img != null && !img.trim().isEmpty()) {
                     out.println("<img src='" + escapeHtml(img) + "' alt='Restaurant Image' "
-                            + "style='width:100%; height:180px; object-fit:cover; border-radius:8px; margin-bottom:10px;'>");
+                            + "style='width:100%; height:180px; object-fit:cover; border-radius:8px; margin-bottom:10px;' "
+                            + "onerror=\"this.style.display='none'; this.nextElementSibling.style.display='flex';\">");
+                    
+                    // Fallback div
+                    out.println("<div style='width:100%; height:180px; background:#ddd; border-radius:8px; "
+                            + "margin-bottom:10px; display:none; align-items:center; justify-content:center; color:#555;'>"
+                            + "Image Not Available</div>");
                 } else {
                     out.println("<div style='width:100%; height:180px; background:#ddd; border-radius:8px; "
                             + "margin-bottom:10px; display:flex; align-items:center; justify-content:center; color:#555;'>"
                             + "No Image</div>");
                 }
-
-
+                
 
                 out.println("<h3>Restaurant ID: " + rs.getInt("Restaurant_ID") + "</h3>");
 

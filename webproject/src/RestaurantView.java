@@ -29,7 +29,7 @@ public class RestaurantView extends HttpServlet {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 
-            String sql = "SELECT Restaurant_ID, User_name, Address_State, Address_Street_Line, Address_ZIP, Email_address, Phone FROM Restaurant ORDER BY Restaurant_ID DESC";
+            String sql = "SELECT Restaurant_ID, User_name, Address_State, Address_Street_Line, Address_ZIP, Email_address, Phone, image_source FROM Restaurant ORDER BY Restaurant_ID DESC";
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
 
@@ -45,6 +45,19 @@ public class RestaurantView extends HttpServlet {
                 count++;
 
                 out.println("<div class='card'>");
+                
+                String img = rs.getString("image_source");
+
+                if (img != null && !img.trim().isEmpty()) {
+                    out.println("<img src='" + escapeHtml(img) + "' alt='Restaurant Image' "
+                            + "style='width:100%; height:180px; object-fit:cover; border-radius:8px; margin-bottom:10px;'>");
+                } else {
+                    out.println("<div style='width:100%; height:180px; background:#ddd; border-radius:8px; "
+                            + "margin-bottom:10px; display:flex; align-items:center; justify-content:center; color:#555;'>"
+                            + "No Image</div>");
+                }
+
+
 
                 out.println("<h3>Restaurant ID: " + rs.getInt("Restaurant_ID") + "</h3>");
 

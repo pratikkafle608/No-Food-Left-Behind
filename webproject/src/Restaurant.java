@@ -48,6 +48,8 @@ public class Restaurant extends HttpServlet {
         String addressZIP = request.getParameter("addressZIP");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
+  
+
 
         // Print received parameters for the users to see illustrate the backend
         System.out.println("=== REGISTRATION ATTEMPT ===");
@@ -81,7 +83,7 @@ public class Restaurant extends HttpServlet {
             System.out.println("Database connection established");
 
             // SQL insert query that matches exact table structure and its attributes
-            String sql = "INSERT INTO Restaurant (User_name, Password, Address_State, Address_Street_Line, Address_ZIP, Email_address, Phone) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Restaurant (User_name, Password, Address_State, Address_Street_Line, Address_ZIP, Email_address, Phone, image_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             stmt = conn.prepareStatement(sql);
 
             // Set parameters according to table structure for username, passwrd and address street, state and zip-code
@@ -101,6 +103,12 @@ public class Restaurant extends HttpServlet {
             stmt.setString(5, addressZIP.trim()); // Address_ZIP varchar(10) NOT NULL
             stmt.setString(6, email.trim()); // Email_address varchar(25) NOT NULL
             stmt.setString(7, phone.trim()); // Phone varchar(12) NOT NULL
+            
+            if (imageSource != null && !imageSource.trim().isEmpty()) {
+                stmt.setString(8, imageSource.trim());
+            } else {
+                stmt.setNull(8, java.sql.Types.VARCHAR);
+            }
 
             System.out.println("Executing SQL: " + sql);
             System.out.println("With parameters: [" + userName + ", " + password + ", " + addressState + ", " + addressStreet + ", " + addressZIP + ", " + email + ", " + phone + "]");
@@ -299,7 +307,7 @@ public class Restaurant extends HttpServlet {
                "<ul class='nav-links'>" +
                "<li><a href='MainApp.html'>Home</a></li>" +
                "<li><a href='Signup.html'>Register Restaurant</a></li>" +
-               "<li><a href='SignupSearch.html'>View Restaurants</a></li>" +
+               "<li><a href='RestaurantView'>View Restaurants</a></li>" +
                "</ul>" +
                "</nav>";
     }
